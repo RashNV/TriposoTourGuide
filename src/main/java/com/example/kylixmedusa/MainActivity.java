@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.setTitle("Triposo");
         login = findViewById(R.id.B1);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -38,5 +37,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 }
-
-

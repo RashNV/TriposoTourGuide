@@ -27,7 +27,6 @@ public class ViewTravelActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_travel);
-        this.setTitle("Triposo");
         name = findViewById(R.id.viewPName);
         des = findViewById(R.id.viewPDes);
         model = (TravelModel) getIntent().getSerializableExtra("object");

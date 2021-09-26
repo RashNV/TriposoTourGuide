@@ -48,7 +48,6 @@ public class AddEditTravelActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_travel);
-        this.setTitle("Triposo");
         uploadBtn = findViewById(R.id.uploadBtn);
         uploadBtn.setOnClickListener(this);
         addBtn = findViewById(R.id.TAdd1);

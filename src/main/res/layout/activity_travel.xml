@@ -9,6 +9,7 @@
     android:padding="24dp"
     tools:context=".TravelActivity">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -164,7 +165,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Hotel And Restaurants"
+                        android:text="Hostel And Restaurants"
                         android:textColor="#FF5832"
                         android:textSize="24dp" />
 
@@ -224,8 +225,7 @@
                                 android:background="@drawable/back"
                                 android:onClick="onClick"
                                 android:text="View"
-                                app:backgroundTint="@android:color/holo_blue_bright"
-                                />
+                                app:backgroundTint="@android:color/holo_blue_bright" />
 
                         </LinearLayout>
 
@@ -387,27 +387,6 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/vtn4"
-        android:layout_width="222dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/back"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="Customer Review"
-        app:backgroundTint="#0C2197" />
-
 
 
 </LinearLayout>

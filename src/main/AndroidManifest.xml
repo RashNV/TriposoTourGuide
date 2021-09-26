@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kylixmedusa">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Triposo"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KylixMedusa">
-        <activity android:name=".ViewTravelActivity" />
+        <activity android:name=".ViewTravelActivity"></activity>
         <activity android:name=".TravelListActivity" />
         <activity android:name=".AddEditTravelActivity" />
         <activity android:name=".TravelActivity" />
-        <activity android:name=".RVActivity"></activity>
-        <activity android:name=".Review"></activity>
-        <activity android:name=".ViewEventActivity"></activity>
-        <activity android:name=".AllHotelList"></activity>
-        <activity android:name=".AddNewHotel"></activity>
-        <activity android:name=".EventListActivity" />
-        <activity android:name=".AddEditEventActivity" />
-        <activity android:name=".EventActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

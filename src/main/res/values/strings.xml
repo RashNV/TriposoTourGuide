@@ -17,13 +17,4 @@
         <item>Wildlife tourism.</item>
         <item>Wellness Tourism.</item>
     </string-array>
-    <string-array name="City">
-        <item>Ells</item>
-        <item>Hatton</item>
-        <item>Kandy</item>
-        <item>Mathara</item>
-        <item>Galla</item>
-        <item>NuwaraEliya</item>
-        <item>Chillow</item>
-    </string-array>
 </resources>

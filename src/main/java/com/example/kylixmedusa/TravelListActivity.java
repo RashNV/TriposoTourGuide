@@ -36,7 +36,6 @@ public class TravelListActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_list);
-        this.setTitle("Triposo");
         listView = findViewById(R.id.ksListView);
         databaseReference = FirebaseDatabase.getInstance().getReference("travel");
         add = findViewById(R.id.newBtn);
