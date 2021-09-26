@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="390dp"
+        android:layout_height="710dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rrl"
+            android:alpha="0.4"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="140dp"
+                android:layout_marginEnd="50dp"
+                android:hint="username" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="200dp"
+
+                android:layout_marginEnd="50dp"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/B1"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="50dp"
+                android:background="@android:color/holo_blue_light"
+                android:text="Login As A Guest"
+                app:backgroundTint="@android:color/holo_blue_light" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="101dp"
+                android:paddingTop="15dp"
+                app:srcCompat="@drawable/logo2" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"
+            android:fontFamily="cursive"
+            android:text="WELCOME"
+            android:textSize="50sp" />
+
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

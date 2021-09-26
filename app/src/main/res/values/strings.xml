@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Kylix Medusa</string>
+    <string name="event">Event</string>
+    <string-array name="Province">
+        <item>western</item>
+        <item>Eastern</item>
+        <item>Southern</item>
+        <item>Northern</item>
+        <item>North Western</item>
+        <item>Uva Province</item>
+        <item>Central Province</item>
+    </string-array>
+
+    <string-array name="Category">
+        <item>Adventure tourism</item>
+        <item>Business tourism</item>
+        <item>Wildlife tourism.</item>
+        <item>Wellness Tourism.</item>
+    </string-array>
+    <string-array name="City">
+        <item>Ells</item>
+        <item>Hatton</item>
+        <item>Kandy</item>
+        <item>Mathara</item>
+        <item>Galla</item>
+        <item>NuwaraEliya</item>
+        <item>Chillow</item>
+    </string-array>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "875613778275",
+    "firebase_url": "https://kylix-medusa-default-rtdb.firebaseio.com",
+    "project_id": "kylix-medusa",
+    "storage_bucket": "kylix-medusa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875613778275:android:f9e0abe942c7c193af6356",
+        "android_client_info": {
+          "package_name": "com.example.kylixmedusa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875613778275-77pu67t43905gamfuqhe2h6qn0vtt5o5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY-aBcbXIVFvd5bpLWSEE9ITADevrVNYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875613778275-77pu67t43905gamfuqhe2h6qn0vtt5o5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
