@@ -17,14 +17,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class EventArrayAdapter extends ArrayAdapter<EventModel> implements View.OnClickListener {
-    private List<EventModel> list;
-    private EventModel model;
+public class TravelArrayAdapter extends ArrayAdapter<TravelModel> implements View.OnClickListener {
+    private List<TravelModel> list;
+    private TravelModel model;
     private boolean isAdmin;
 
 
-    public EventArrayAdapter(@NonNull Context context, List<EventModel> list, boolean isAdmin) {
-        super(context, R.layout.list_title_layout2, list);
+    public TravelArrayAdapter(@NonNull Context context, List<TravelModel> list, boolean isAdmin) {
+        super(context, R.layout.list_tile_layout, list);
         this.list = list;
         this.isAdmin = isAdmin;
     }
@@ -34,26 +34,23 @@ public class EventArrayAdapter extends ArrayAdapter<EventModel> implements View.
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         model = getItem(position);
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        convertView = inflater.inflate(R.layout.list_title_layout2, parent, false);
-        TextView name = convertView.findViewById(R.id.viewEventName);
-        TextView price = convertView.findViewById(R.id.viewEventPrice);
+        convertView = inflater.inflate(R.layout.list_tile_layout, parent, false);
+        TextView name = convertView.findViewById(R.id.viewplceName);
         Button see = convertView.findViewById(R.id.vtn2);
         ImageView imageView = convertView.findViewById(R.id.viewImage);
-        if(model.getPhoto()!=null){
-            if (!model.getPhoto().isEmpty()){
+        if (model.getPhoto() != null) {
+            if (!model.getPhoto().isEmpty()) {
                 Picasso.get().load(model.getPhoto()).into(imageView);
             }
         }
-
         see.setOnClickListener(this);
         name.setText(model.getName());
-        price.setText("Rs : " + model.getPrice());
         return convertView;
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getContext(), ViewEventActivity.class);
+        Intent intent = new Intent(getContext(), ViewTravelActivity.class);
         intent.putExtra("object", model);
         intent.putExtra("isAdmin", isAdmin);
         getContext().startActivity(intent);

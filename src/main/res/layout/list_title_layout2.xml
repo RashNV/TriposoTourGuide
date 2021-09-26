@@ -30,12 +30,21 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/viewplceName"
+                        android:id="@+id/viewEventName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Diving Adventure"
                         android:textColor="#191818"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/viewEventPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Diving Adventure"
+                        android:textColor="#FF5832"
                         android:textSize="18dp" />
 
 

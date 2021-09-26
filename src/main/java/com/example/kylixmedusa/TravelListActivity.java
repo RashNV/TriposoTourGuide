@@ -1,5 +1,8 @@
 package com.example.kylixmedusa;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -7,10 +10,9 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,21 +24,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventListActivity extends AppCompatActivity implements View.OnClickListener {
+public class TravelListActivity extends AppCompatActivity implements View.OnClickListener {
 
     ListView listView;
     DatabaseReference databaseReference;
-    List<EventModel> list;
+    List<TravelModel> list;
     Button add;
     EditText searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event_list);
+        setContentView(R.layout.activity_travel_list);
         this.setTitle("Triposo");
         listView = findViewById(R.id.ksListView);
-        databaseReference = FirebaseDatabase.getInstance().getReference("event");
+        databaseReference = FirebaseDatabase.getInstance().getReference("travel");
         add = findViewById(R.id.newBtn);
         add.setOnClickListener(this);
         searchView = findViewById(R.id.searchView);
@@ -74,10 +76,10 @@ public class EventListActivity extends AppCompatActivity implements View.OnClick
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    list.add(dataSnapshot.getValue(EventModel.class));
+                    list.add(dataSnapshot.getValue(TravelModel.class));
                 }
 
-                EventArrayAdapter arrayAdapter = new EventArrayAdapter(EventListActivity.this, list, getIntent().getBooleanExtra("isAdmin", true));
+                TravelArrayAdapter arrayAdapter = new TravelArrayAdapter(TravelListActivity.this, list, getIntent().getBooleanExtra("isAdmin", true));
                 listView.setAdapter(arrayAdapter);
             }
 
@@ -90,7 +92,7 @@ public class EventListActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, AddEditEventActivity.class);
+        Intent intent = new Intent(this, AddEditTravelActivity.class);
         startActivity(intent);
     }
 
@@ -105,10 +107,10 @@ public class EventListActivity extends AppCompatActivity implements View.OnClick
                 list.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                    list.add(dataSnapshot.getValue(EventModel.class));
+                    list.add(dataSnapshot.getValue(TravelModel.class));
                 }
 
-                EventArrayAdapter arrayAdapter = new EventArrayAdapter(EventListActivity.this, list, getIntent().getBooleanExtra("isAdmin", true));
+                TravelArrayAdapter arrayAdapter = new TravelArrayAdapter(TravelListActivity.this, list, getIntent().getBooleanExtra("isAdmin", true));
                 listView.setAdapter(arrayAdapter);
 
             }

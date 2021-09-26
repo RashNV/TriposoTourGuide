@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.setTitle("Triposo");
         login = findViewById(R.id.B1);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(this, EventActivity.class);
+        Intent intent = new Intent(this, TravelActivity.class);
         if (username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
             intent.putExtra("isAdmin", true);
         } else {
@@ -37,3 +38,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 }
+
+

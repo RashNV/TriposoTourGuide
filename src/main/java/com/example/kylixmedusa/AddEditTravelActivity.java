@@ -1,5 +1,7 @@
 package com.example.kylixmedusa;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,8 +15,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,22 +24,16 @@ import com.google.firebase.storage.StorageReference;
 import java.io.IOException;
 import java.util.UUID;
 
-public class AddEditEventActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddEditTravelActivity extends AppCompatActivity implements View.OnClickListener {
 
     DatabaseReference databaseReference;
     Button uploadBtn;
     Button addBtn;
     EditText name;
-    EditText cName;
-    EditText phne;
-    EditText price;
     EditText description;
-    EditText email;
-    EventModel model;
+    EditText location;
+    TravelModel model;
     boolean add = true;
-    String p;
-    String c;
-
     Uri filePath;
 
     // request code
@@ -53,28 +47,22 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_travel);
         this.setTitle("Triposo");
-        uploadBtn = findViewById(R.id.addEventUploadBtn);
+        uploadBtn = findViewById(R.id.uploadBtn);
         uploadBtn.setOnClickListener(this);
-        addBtn = findViewById(R.id.addEventBtn);
+        addBtn = findViewById(R.id.TAdd1);
         addBtn.setOnClickListener(this);
 
-        name = findViewById(R.id.EventName);
-        cName = findViewById(R.id.Cname);
-        phne = findViewById(R.id.phone);
-        price = findViewById(R.id.price);
-        description = findViewById(R.id.description);
-        email = findViewById(R.id.email);
-        databaseReference = FirebaseDatabase.getInstance().getReference("event");
+        name = findViewById(R.id.pname);
+        description = findViewById(R.id.desc);
+        location = findViewById(R.id.location);
+        databaseReference = FirebaseDatabase.getInstance().getReference("travel");
         if (getIntent().hasExtra("object")) {
-            model = (EventModel) getIntent().getSerializableExtra("object");
+            model = (TravelModel) getIntent().getSerializableExtra("object");
             name.setText(model.getName());
-            cName.setText(model.getcName());
-            phne.setText(model.getPhone());
             description.setText(model.getDescription());
-            email.setText(model.getEmail());
-            price.setText(model.getPrice());
+            location.setText(model.getLocation());
             add = false;
         } else {
             add = true;
@@ -92,7 +80,7 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Province, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        ArrayAdapter<CharSequence>adapter1 = ArrayAdapter.createFromResource(this, R.array.City, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Category, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(adapter);
@@ -171,7 +159,7 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
             ref.putFile(filePath)
                     .addOnSuccessListener(taskSnapshot -> {
                         progressDialog.dismiss();
-                        Toast.makeText(AddEditEventActivity.this,
+                        Toast.makeText(AddEditTravelActivity.this,
                                 "Image Uploaded!!",
                                 Toast.LENGTH_SHORT)
                                 .show();
@@ -184,7 +172,7 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
                                     public void onSuccess(Object o) {
                                         model.setPhoto(((Uri) o).toString());
                                         databaseReference.child(model.getId()).setValue(model);
-                                        Toast.makeText(AddEditEventActivity.this, add ? "Event Add" : "Event Update", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(AddEditTravelActivity.this, add ? "Event Add" : "Event Update", Toast.LENGTH_LONG).show();
                                         finish();
                                     }
 
@@ -198,7 +186,7 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
                         // Error, Image not uploaded
                         progressDialog.dismiss();
                         Toast
-                                .makeText(AddEditEventActivity.this,
+                                .makeText(AddEditTravelActivity.this,
                                         "Failed " + e.getMessage(),
                                         Toast.LENGTH_SHORT)
                                 .show();
@@ -222,16 +210,18 @@ public class AddEditEventActivity extends AppCompatActivity implements View.OnCl
 
         if (v.getId() == addBtn.getId()) {
             if (add) {
-                model = new EventModel(databaseReference.push().getKey(), name.getText().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), cName.getText().toString(), phne.getText().toString(), email.getText().toString(), price.getText().toString(),  description.getText().toString());
+                model = new TravelModel(databaseReference.push().getKey(), name.getText().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), description.getText().toString());
+                model.setLocation(location.getText().toString());
             } else {
-                model.update(name.getText().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), cName.getText().toString(), phne.getText().toString(), email.getText().toString(), price.getText().toString(), description.getText().toString());
+                model.update(name.getText().toString(), spinner.getSelectedItem().toString(), spinner2.getSelectedItem().toString(), description.getText().toString());
+                model.setLocation(location.getText().toString());
             }
             uploadImage();
 
             if (filePath == null) {
 
                 databaseReference.child(model.getId()).setValue(model);
-                Toast.makeText(AddEditEventActivity.this, add ? "Event Add" : "Event Update", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddEditTravelActivity.this, add ? "Travel Add" : "Travel Update", Toast.LENGTH_LONG).show();
                 finish();
 
             }

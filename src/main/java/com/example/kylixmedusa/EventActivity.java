@@ -1,10 +1,10 @@
 package com.example.kylixmedusa;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EventActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -13,6 +13,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+        this.setTitle("Triposo");
     }
 
     @Override

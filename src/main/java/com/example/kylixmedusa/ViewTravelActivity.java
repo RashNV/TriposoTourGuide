@@ -1,5 +1,7 @@
 package com.example.kylixmedusa;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,18 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.google.android.gms.maps.MapView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class ViewEventActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView contact;
+public class ViewTravelActivity extends AppCompatActivity implements View.OnClickListener {
     TextView des;
-    TextView location;
-    TextView price;
     TextView name;
-    EventModel model;
+    TextView location;
+    TravelModel model;
     Button delete;
     Button edit;
 
@@ -27,27 +26,24 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_event);
+        setContentView(R.layout.activity_view_travel);
         this.setTitle("Triposo");
-        name = findViewById(R.id.viewEName);
-        contact = findViewById(R.id.viewECont);
-        des = findViewById(R.id.viewEDes);
-        location = findViewById(R.id.viewELoc);
-        price = findViewById(R.id.viewEPrice);
-        model = (EventModel) getIntent().getSerializableExtra("object");
+        name = findViewById(R.id.viewPName);
+        des = findViewById(R.id.viewPDes);
+        model = (TravelModel) getIntent().getSerializableExtra("object");
         name.setText(model.getName());
-        contact.setText(model.getcName() + "," + model.getPhone() + "," + model.getEmail());
         des.setText(model.getDescription());
-        location.setText(model.getProvince() + ", " + model.getCity());
-        price.setText("Rs : " + model.getPrice());
+
+        location = findViewById(R.id.viewPloc);
+        location.setText(model.getLocation());
 
         delete = findViewById(R.id.deleteBtn);
         edit = findViewById(R.id.modiBtn);
         delete.setOnClickListener(this);
         edit.setOnClickListener(this);
         ImageView imageView = findViewById(R.id.vixId);
-        if(model.getPhoto()!=null){
-            if (!model.getPhoto().isEmpty()){
+        if (model.getPhoto() != null) {
+            if (!model.getPhoto().isEmpty()) {
                 Picasso.get().load(model.getPhoto()).into(imageView);
             }
         }
@@ -65,11 +61,11 @@ public class ViewEventActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
 
         if (v.getId() == R.id.deleteBtn) {
-            FirebaseDatabase.getInstance().getReference("event").child(model.getId()).removeValue();
-            Toast.makeText(this, "Event Delete", Toast.LENGTH_LONG).show();
+            FirebaseDatabase.getInstance().getReference("travel").child(model.getId()).removeValue();
+            Toast.makeText(this, "Place Delete", Toast.LENGTH_LONG).show();
             finish();
         } else {
-            Intent intent = new Intent(this, AddEditEventActivity.class);
+            Intent intent = new Intent(this, AddEditTravelActivity.class);
             intent.putExtra("object", model);
             startActivity(intent);
             finish();
